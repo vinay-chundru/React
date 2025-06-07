@@ -25,25 +25,33 @@ const DisplayName = () => {
         <label htmlFor="first-name" style={{ marginRight: "10px", width: "100px" }}>
           First Name:
         </label>
-        <input value={firstName} onChange={e => {
+        <input 
+        id="first-name"
+        value={firstName} 
+        type="text"
+        placeholder="First Name"
+        onChange={e => {
             setFirstName(e.target.value);
         }}
-        type="text"
-        placeholder="First Name" />
+         />
     </div>
     <div>
         <label htmlFor="last-name" style={{ marginRight: "10px", width: "100px" }}>
           Last Name:
         </label>
-        <input value={lastName} onChange={e => {
+        <input 
+        id="last-name" 
+        value={lastName} 
+        type="text" 
+        placeholder="Last name"
+        onChange={e => {
            setLastName(e.target.value);
         }}
-        type="text" 
-        placeholder="Last name"/>
+       />
     </div>
 
     <div>
-        <button type="submit">submit</button>
+        <button type="submit">Submit</button>
     </div>
     </form>
 
