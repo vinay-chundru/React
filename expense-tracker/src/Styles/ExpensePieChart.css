@@ -1,0 +1,29 @@
+.expense-pie-container {
+  text-align: center;
+  padding: 1rem;
+}
+
+.legend-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.legend-label {
+  font-weight: 600;
+  color: #ddd;
+}
