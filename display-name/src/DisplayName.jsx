@@ -20,6 +20,7 @@ const DisplayName = () => {
 }
   return (
     <>
+    <h1>Full Name Display</h1>
     <form onSubmit={handleSubmit}>
     <div>
         <label htmlFor="first-name" style={{ marginRight: "10px", width: "100px" }}>
