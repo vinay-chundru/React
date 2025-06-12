@@ -1,0 +1,36 @@
+.inputStyle {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gridStyle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.cardStyle {
+  width: 150px;
+  height: 180px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgStyle {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
