@@ -6,7 +6,7 @@ const API_URL =
 
 function CountryCard({ name, flag }) {
   return (
-    <div className="countryCard cardStyle">
+    <div className="countryCard">
       <img src={flag} alt={`Flag of ${name}`} className="imgStyle" />
       <h3>{name}</h3>
     </div>
