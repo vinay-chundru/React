@@ -8,7 +8,7 @@ function CountryCard({ name, flag }) {
   return (
     <div className="countryCard">
       <img src={flag} alt={`Flag of ${name}`} className="imgStyle" />
-      <h3>{name}</h3>
+      <h2>{name}</h2>
     </div>
   );
 }
