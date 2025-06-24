@@ -16,10 +16,11 @@ const Pagination = () => {
         "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
       );
       if (!res.ok) {
-        throw new Error("Failed");
+        throw new Error("failed to fetch data");
       }
       const json = await res.json();
       setData(json);
+      setCurrentPage(1);
     } catch (error) {
       alert("failed to fetch data");
     }
@@ -87,18 +88,20 @@ const Pagination = () => {
           Previous
         </button>
 
-        <span
+        <div
           style={{
+            display: "inline-block",
             marginRight: "10px",
             backgroundColor: "#00896c",
             color: "white",
             padding: "8px 14px",
             fontWeight: "bold",
-            fontSize: "16px"
+            fontSize: "16px",
+            borderRadius: "5px",
           }}
         >
-         {currentPage}
-        </span>
+          {currentPage}
+        </div>
         
         <button
           onClick={handleNext}
