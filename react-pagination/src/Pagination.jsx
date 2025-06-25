@@ -1,46 +1,50 @@
-// App.js
-import React, { useEffect, useState } from "react";
+// PaginationApp.js
+import React, { useState, useEffect } from "react";
 
-const Pagination = () => {
+const PaginationApp = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState(null);
   const pageSize = 10;
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const res = await fetch(
-        "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
-      );
-      if (!res.ok) {
-        throw new Error("failed to fetch data");
-      }
-      const json = await res.json();
-      setData(json);
-      setCurrentPage(1);
-    } catch (error) {
-      alert("failed to fetch data");
-    }
-  };
-
-  const totalPages = Math.ceil(data.length / pageSize);
+  const totalPages = Math.max(1, Math.ceil(data.length / pageSize));
   const startIndex = (currentPage - 1) * pageSize;
   const currentData = data.slice(startIndex, startIndex + pageSize);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+        );
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await res.json();
+        setData(data);
+        setCurrentPage(1); // reset to first page on fetch
+      } catch (err) {
+        setError(err.message);
+        alert("Failed to fetch data");
+      }
+    };
+    fetchData();
+  }, []);
+
   const handlePrevious = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
   };
 
   const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
       <h2>Employee Data Table</h2>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
       <table
         style={{
           width: "90%",
@@ -100,9 +104,9 @@ const Pagination = () => {
             borderRadius: "5px",
           }}
         >
-          {currentPage}
+          {currentPage} 
         </div>
-        
+
         <button
           onClick={handleNext}
           disabled={currentPage === totalPages}
@@ -122,4 +126,4 @@ const Pagination = () => {
   );
 };
 
-export default Pagination;
+export default PaginationApp;
